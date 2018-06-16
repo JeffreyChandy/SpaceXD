@@ -1,0 +1,17 @@
+void move(float item[3]){
+float vectorBetween[3];
+float state[12];
+float distance;
+float percent;
+float percent1;
+  api.getMyZRState(state);
+      mathVecSubtract(vectorBetween,item,state,3);
+        distance=mathVecMagnitude(vectorBetween,3);
+    percent=(distance/item[0])*100;
+    percent1=(distance/item[1])*100;
+    if(percent>57&&percent1>57||percent<-57&&percent1>57||percent>57&&percent1<-57||percent<-57&&percent1<-57){
+        api.setVelocityTarget(vectorBetween);
+    }
+   else{
+        api.setPositionTarget(item);
+}}
